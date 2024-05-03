@@ -18,6 +18,10 @@ public class LinkedList {
         public void setNext(Node next) { this.next = next; }
     }
 
+    /*
+     * Appends node to end
+     * @param node - node that will be appended at the end
+     */
     public void add(Node node) {
         if(node == null) {
             return;
@@ -31,6 +35,11 @@ public class LinkedList {
             curr = curr.getNext();
         }
         curr.setNext(node);
+    }
+
+    public void addToFront(Node node) {
+        node.setNext(root);
+        root = node;
     }
 
     public Node search(int data) {
