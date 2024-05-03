@@ -49,6 +49,9 @@ public class UnionFind {
     /*
      * The lazy approach
      * Can be interpreted as a tree
+     * Trees can get too tall
+     * Find is too expensive
+     * Big O - initialize - O(n), union - O(n), find - O(n)
      */
     class QuickUnion {
 
