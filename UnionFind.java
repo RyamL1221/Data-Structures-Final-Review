@@ -93,4 +93,68 @@ public class UnionFind {
             parent[parent1] = parent2;
         }
     }
+
+    /*
+     * Modify quick union to avoid tall trees
+     * Keep trach of each tree
+     * Link root of smaller tree to large tree
+     */
+    class WeightedQuickUnion {
+        // parent array
+        int[] parent;
+
+        //size of each tree
+        int[] size;
+
+        /*
+         * @param n - parent array size 
+         */
+        public WeightedQuickUnion(int n) {
+            parent = new int[n];
+            for(int i = 0; i < parent.length; i++) {
+                parent[i] = i;
+            }
+        }
+
+        public void updateSize() {
+            int size = 0;
+            for(int i = 0; i < this.size.length; i++) {
+                int index = i;
+                size = 0;
+                while(index != parent[index]) {
+                    size++;
+                    index = parent[index];
+                }
+                this.size[index] = size;
+            }
+        }
+
+        /*
+         * @param target - trying to find the parent of the number "target"
+         * uses quick find 
+         */
+        public int find(int target) {
+            while(target != parent[target]) {
+                target = parent[target];
+            }
+            return target;
+        }
+
+        public void union(int int1, int int2) {
+            int parent1 = find(int1);
+            int parent2 = find(int2);
+            if(parent1 == parent2) return;
+
+            // parent1 is the root of the smaller tree
+            if(size[parent1] >= size[parent2]) {
+                int temp = parent1;
+                parent1 = parent2;
+                parent2 = temp;
+            }
+
+            // link root of smaller tree to root of the larger tree
+            parent[parent1] = parent2;
+            size[parent2] += size[parent1];
+        }
+    }
 }
