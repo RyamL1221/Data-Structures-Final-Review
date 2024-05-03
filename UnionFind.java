@@ -68,6 +68,8 @@ public class UnionFind {
 
         /*
          * @param number that is being searched for
+         * @return parent of the number being searched 
+         * traverse the parent tree until the root is reached
          * 
          */
         public int find(int target) {
@@ -75,6 +77,17 @@ public class UnionFind {
                 target = parent[target];
             }
             return target;
+        }
+
+        /*
+         * @param int1 - the child 
+         * @param int2 - new parent
+         * changes the parent of int1 to the parent of int2
+         */
+        public void union(int int1, int int2) {
+            int parent1 = find(int1);
+            int parent2 = find(int2);
+            parent[parent1] = parent2;
         }
     }
 }
