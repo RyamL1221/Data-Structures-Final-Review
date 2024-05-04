@@ -81,4 +81,6 @@ public class LinkedList<T> {
         prev.setNext(curr.getNext());
         return temp;
     }
+
+    public int size() { return n; }
 }

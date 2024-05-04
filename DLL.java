@@ -71,4 +71,6 @@ public class DLL<T>{
         prev.setNext(curr.getNext());
         return temp;
     }
+
+    public int size() { return n; }
 }
