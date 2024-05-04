@@ -5,7 +5,6 @@ public class Queue<T> {
     //size of linked list 
     private int n;
 
-    // default constructor
     public Queue() {
         linkedList = new LinkedList<T>();
     }
