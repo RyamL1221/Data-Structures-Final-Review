@@ -18,6 +18,7 @@ public class DLL<T>{
         while(curr.getNext() != null) { curr = curr.getNext(); }
         curr.setNext(node);
         node.setPrev(curr);
+        n++;
     }
 
     public Node<T> search(T data) {
